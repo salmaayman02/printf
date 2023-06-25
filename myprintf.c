@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
-
+#include <unistd.h>
 
 /**
  * _printf - print format
@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 {
 
 	va_list argn;
-	int i = 0, r = 0;
+	int i = 0, r = 0, y;
 	char *x;
 
 	va_start(argn, format);
@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{	case 'c':
 				{	x = va_arg(argn, char *);
-					r += putchar(x);
+					r += print_string(x);
 					break;
 				}
 				case 's':
@@ -42,8 +42,8 @@ int _printf(const char *format, ...)
 				}
 				case 'd':
 				case 'i':
-				{	x = va_arg(argn, int);
-					r += print_int(x);
+				{	y = va_arg(argn, int);
+					r += print_int(y);
 					break;
 				}
 			}

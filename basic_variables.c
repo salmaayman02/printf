@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 /**
  * put_char - print char
@@ -13,8 +14,7 @@
 
 int put_char(char x)
 {
-	write(1, &x, 1);
-	return (1);
+	return (write(1, &x, 1));
 }
 
 /**
@@ -52,7 +52,7 @@ int print_string(char *x)
 
 int print_int(int x)
 {
-	int d[100], temp = x, i = 0;
+	int d[100], temp = x, i = 0, j;
 
 	if (x == 0)
 	{
@@ -70,7 +70,7 @@ int print_int(int x)
 		temp = temp / 10;
 		i++;
 	}
-	for (int j = i - 1; j >= 0; j--)
+	for (j = i - 1; j >= 0; j--)
 	{
 		put_char(d[j] + '0');
 	}
